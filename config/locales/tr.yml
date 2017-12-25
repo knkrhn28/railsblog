@@ -1,0 +1,12 @@
+tr: 
+    hello: 'Uygulamama hosgeldiniz!'
+    home: 'Ana Sayfa'
+    signin: 'Oturum Aç'
+    signup: 'Üye Ol'
+    exit: 'Çıkış'
+    settings: 'Ayarlar'
+    history: 'Geçmiş'
+    contact: 'İletişim'
+    Language: 'Dil Seçiniz:'
+    Turkish: 'Türkçe'
+    English: 'İngilizce'

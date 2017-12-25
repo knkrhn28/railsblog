@@ -1,0 +1,83 @@
+
+
+
+<div class="container">
+    
+    <div class="col-md-2"></div>
+<div class="col-md-8">
+    
+     <div class="row">
+          <% @posts.each do |post| %>
+
+            <div class="panel panel-default widget" >
+                
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item" align="left">
+                            <div class="row" >
+                                <div class="col-xs-2 col-md-2">
+                                    <%=image_tag post.user.image.url(:thumb) if post.user.image?%>
+                                </div>
+                                <div class="col-xs-10 col-md-10">
+                                    <div>
+                                        <div class="mic-info" >
+                                             <a href="?user=<%=post.user.id%>"> <%=post.user.name%> </a> <%=post.created_at%>
+                                        </div>
+                                    </div>
+                                   
+
+                                    <div class="comment-text">
+                                        <%=post.title%> <br/>
+                                        <%=image_tag post.image.url(:medium),class:"img img-responsive" if post.image?%>
+                                        <br/>
+                                        <%=post.msg%>
+                                    </div>
+                                	
+                                    <hr>
+                                    <div class="action">
+                                      <%= link_to '', post, :method => :delete, data: {confirm: 'Eminmisin?',commit: 'Evet'},class:"glyphicon glyphicon-trash" %>
+                                      <%= link_to '', edit_post_path(post),class:"glyphicon glyphicon-pencil" %>
+                                      <%= link_to '', post_path(post),class:"glyphicon glyphicon-comment" %>
+                                      
+                                      <hr>
+                                      <div id="<%=post.id%>">
+                                      <%if Like.where(user:current_user, post:post).count>0%>
+                                         <%= link_to "", unlike_post_path(post), class:"like glyphicon glyphicon-heart-empty",remote: :true, method: :put %>
+                                      <%else%>
+                                         <%= link_to "", like_post_path(post), class:"like glyphicon glyphicon-heart",remote: :true, method: :put %>
+                                      <%end%>
+                                      </div>
+                                      <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <%end%>
+        </div>
+    
+    
+    
+</div>
+<div class="col-md-2"></div>
+    
+    
+    
+       
+    </div>                
+<!-- Footer -->
+<div class="container">
+    <hr />
+        <div class="text-center center-block">
+              <a href="https://www.facebook.com/mad28"><i class="fa fa-facebook fa-3x social"style="color:#3b5998"></i></a>
+	            <a href="https://twitter.com/okankarahan28"><i class="fa fa-twitter fa-3x social"style="color:#007bb6"></i></a>
+	            <a href="https://github.com/knkrhn28"><i class="fa fa-github-square fa_custom fa-3x"style="color:#000000"></i></a>
+	            <a href="https://www.linkedin.com/in/okan-karahan-b5060b51/"><i class="fa fa-linkedin-square fa-3x social" style="color:#007bb6"></i></a>
+	            <a href="https://www.instagram.com/okankarahan28"><i class="fa fa-instagram fa-3x social"style="color:#bc2a8d"></i></a>
+	            <br />
+	            <p class="txt-railway"><b>16541904-Okan KARAHAN</b>  </p>
+        </div>
+    <hr />
+</div>
